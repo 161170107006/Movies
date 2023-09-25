@@ -16,7 +16,6 @@ function Watchlist(props) {
 
     const remainingdata = (data) => {
         setmovies(data)
-        console.log('%cWatchlist.js line:18 data', 'color: #007acc;', data);
     }
 
     return (

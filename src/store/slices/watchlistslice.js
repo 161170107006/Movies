@@ -2,9 +2,11 @@
 
 import { createSlice } from '@reduxjs/toolkit';
 
+const initialState = JSON.parse(localStorage.getItem("watchlist")) || [];
+
 const watchlistSlice = createSlice({
     name: 'watchlist',
-    initialState: [],
+    initialState,
     reducers: {
         addItem: (state, action) => {
             const indexToRemove = state.findIndex(item => item.id === action.payload.id);

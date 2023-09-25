@@ -14,12 +14,10 @@ function Movies(props) {
     const whatchlist = (e, data) => {
         if (e.target.checked) {
             dispatch(addItem(data));
-            setwatchlistdata(watchlist_state);
             toast.success("added to watchlist");
 
         } else {
             dispatch(removeItem(data));
-            setwatchlistdata(watchlist_state);
             toast.success("remove from watchlist");
 
         }
@@ -27,16 +25,11 @@ function Movies(props) {
 
     useEffect(() => {
         let temp_data = [...watchlist_state]
-        console.log('%cMovies.js line:30 object', 'color: #007acc;', temp_data);
-
-
 
         localStorage.setItem("watchlist", JSON.stringify(temp_data))
 
-
-
         if (props.remainingdata) props.remainingdata(temp_data)
-        console.log('%cMovies.js line:34 "ssss"', 'color: #007acc;', "ssss");
+        setwatchlistdata(temp_data);
 
         setdata(props.data)
 
@@ -58,8 +51,6 @@ function Movies(props) {
     useEffect(() => {
         setdata(props.data)
     }, [props.data])
-
-    console.log('%cMovies.js line:50 object', 'color: #007acc;', data);
 
 
     return (
